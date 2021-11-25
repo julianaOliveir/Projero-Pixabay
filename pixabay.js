@@ -7,8 +7,22 @@ const procurarImagens = async (pesquisa) => {
     return response.json()
 }
 
+const criarCard = ({webformatURL, pageURL}) => {
+    const card = document.createElement('div')
+    card.classList.add('card-container')
+    card.innerHTML = `
+        <a href="${pageURL}">
+            <img src="${webformatURL}" class="card-imagem">
+        </a>
+    `
+    return card
+}
+
 const carregarGaleria = async (pesquisa) => {
+    const container = document.querySelector('.galeria-container')
     const {hits} = await procurarImagens(pesquisa)
+    const cards = hits.map(criarCard)
+    container.replaceChildren(...cards)
 }
 
 const handleKeypress = ({key, target}) => {

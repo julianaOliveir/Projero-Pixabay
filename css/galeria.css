@@ -1,0 +1,12 @@
+.galeria-container{
+    display: flex;
+    flex-wrap: wrap ;
+    gap: 10px;
+    padding: 40px;
+}
+
+@media (max-width:720px) {
+    .galeria-container{
+        padding: 0 6px;
+    }
+}
